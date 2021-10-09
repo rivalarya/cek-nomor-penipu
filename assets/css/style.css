@@ -1,0 +1,136 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/* container atas */
+.searchnomor{
+	width: 80%;
+	padding: 1%;
+	margin-right: 1%;
+}
+.btn-cari{
+	padding: 1%;
+}
+
+.container.text-center{
+	margin-top: 10%;
+}
+
+/* end */
+
+/* container hasil */
+div.container.border.border-primary{
+	margin-top: 10%;
+	width: 75%;
+}
+
+div.col-7.text-left{
+	border: 1px;
+}
+
+img.profil{
+	margin-top: 20px;
+	height: 64px; 
+}
+
+div.col-7.text-left .keterangan{
+	font-size: 1.3rem;
+}
+
+/* end */
+
+footer{
+	text-align: center;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) { 
+
+	h1{
+		font-size: 1.3rem;
+	}
+	h3{
+		font-size: 0.9rem;
+	}
+
+	div.col-7.text-left .tglupload{
+		font-size: 0.5rem;
+		margin-top: -10px;
+	}
+
+	div.col-7.text-left .nama{
+		font-size: 1rem;
+	}
+
+	div.col-7.text-left .keterangan{
+		font-size: 0.8rem;
+		margin-top: 5px;
+	}
+
+	img.profil {
+        margin-top: 6px;
+	    height: 30px;
+	    margin-left: -4px;
+	}
+
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+	h1{
+		font-size: 1.6rem;
+	}
+	h3{
+		font-size: 1.3rem;
+	}
+
+	img.profil {
+	    margin-top: 6px;
+	    margin-left: 6px;
+	    height: 50px;
+	}
+
+	.col-2{
+		    max-width: 10.666667%!important;
+	}
+ }
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) { 
+
+	.col-2{
+		max-width: 11.666667%!important;
+	}
+
+	div.col-7.text-left .nama{
+		font-size: 1.7rem;
+	}
+	div.col-7.text-left .tglupload{
+		font-size: 0.8rem;
+		margin-top: -10px;
+	}
+
+	img.profil {
+	    margin-top: 6px;
+	    height: 60px;
+	}
+
+ }
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+	.col-2{
+		    max-width: 6.666667%!important;
+	}
+
+	div.col-7.text-left .tglupload{
+		font-size: 0.7rem;
+		margin-top: -10px;
+	}
+
+	img.profil {
+    margin-top: 6px;
+    height: 47px;
+	}
+ }
