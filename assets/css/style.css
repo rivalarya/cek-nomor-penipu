@@ -19,6 +19,20 @@
 
 /* end */
 
+/* page tambah */
+input[type="file"]{
+	margin-bottom: 60px;
+}
+#bukti1 , #bukti2, #bukti3{
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+img.bukti.col-7{
+	max-width: 30.733333%;
+}
+/* end */
+
 /* container hasil */
 div.container.border.border-primary{
 	margin-top: 10%;
@@ -39,6 +53,8 @@ div.col-7.text-left .keterangan{
 }
 
 /* end */
+
+
 
 footer{
 	text-align: center;
