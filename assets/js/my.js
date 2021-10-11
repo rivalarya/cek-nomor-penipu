@@ -65,18 +65,18 @@ const thumb1 = document.getElementById('thumb1')
   });
 
   // variabel ker nentuken jumlah foto
-  let no = 2;
+  let no = 1;
 
-    $("#tambah").click(function(){
+  $("#tambah").on("click",function(){
 
-      if(no < 4){
+        no++;
 
       let baru = $(`<div class='form-inline justify-content-around border mt-3 mb-3'>
                         <input type='file' class='form-control col-4' name='bukti${no}' id='bukti${no}' required>
                         <img id='thumb${no}'  class='bukti col-7' src=''/>
                         <span id="hapus" class="badge badge-danger w-auto p-2" onclick="hapusfoto(this)"> Hapus </span>
                     </div> `);
-      $("#tambah").before(baru);
+      $("#tambahbukti").before(baru);
                     
       //preview 
         const bukti = document.getElementById(`bukti${no}`)
@@ -87,17 +87,15 @@ const thumb1 = document.getElementById('thumb1')
         });
        
 
-        no++;
-       
-      }
-
     });
 
     setInterval(function(){
-      if(no > 3){
-        $("#tambah").hide();
+      if(no >= 3){
+        $("#tambah").hide()
+        $(".tambah1").show()
       }else{
-        $("#tambah").show();
+        $("#tambah").show()
+        $(".tambah1").hide()
       }
     },100)
 
@@ -106,8 +104,16 @@ const thumb1 = document.getElementById('thumb1')
   // script hapus foto
 
   function hapusfoto(e) {
+
+    if($(e)[0].parentNode.firstElementChild.name == 'bukti2' && $('#bukti3') != null){
+      const ganti = 'bukti2'
+      $('#bukti3')[0].name = ganti
+      $('#bukti3')[0].attributes.id.value = ganti
+      $('#thumb3')[0].attributes.id.value = 'thumb2'
+      
+     }
     $(e)[0].parentElement.remove()
-     no-=1
+    no-=1
   }
 
   // end script hapus foto

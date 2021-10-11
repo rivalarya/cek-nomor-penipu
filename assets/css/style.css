@@ -28,6 +28,10 @@ input[type="file"]{
 	margin-bottom: auto;
 }
 
+.row.justify-content-center.border{
+	    margin-top: 17vh;
+}
+
 img.bukti.col-7{
 	max-width: 30.733333%;
 }
@@ -57,7 +61,7 @@ div.col-7.text-left .keterangan{
 
 
 footer{
-	text-align: center;
+	text-align: left;
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -143,6 +147,10 @@ footer{
 	div.col-7.text-left .tglupload{
 		font-size: 0.7rem;
 		margin-top: -10px;
+	}
+
+	.container.m-auto{
+		width: 50%;
 	}
 
 	img.profil {

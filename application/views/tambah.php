@@ -1,5 +1,6 @@
-<div class="container">
-    <div class="row justify-content-center my-auto border">
+
+<div class="container m-auto">
+    <div class="row justify-content-center border">
         <div class="col ">
                 <?php echo validation_errors(); ?>
             <?= form_open_multipart('tambah/tambah_data'); ?>
@@ -26,12 +27,13 @@
             </div>
             <div class="form-group">
                 <label for="bukti" >Upload Bukti</label>
-                <div class="form-inline justify-content-around border mt-3 mb-3">
+                <div class="form-inline justify-content-around border p-1 mt-3 mb-3">
                     <input type="file" class="form-control col-4" name="bukti1" id="bukti1" required>
-                    <img id="thumb1"  class="bukti col-6" src=""/>
+                    <img id="thumb1"  class="bukti col-7" src=""/>
+                    <a id="tambah" class="text-success">Tambah bukti</a>
+                    <a class="tambah1 text-warning text-decoration-none">Maksimal 3 bukti</a>
                 </div>
-                 <a id="tambah">Tambah bukti</a>
-                 
+                <span id="tambahbukti"></span>
             </div>
                 <?php 
 					if($this->session->flashdata('pesan'))

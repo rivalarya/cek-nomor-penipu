@@ -8,4 +8,9 @@
 	<link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 	
 </head>
+<nav class="fixed-top text-left">
+	<a href="http://" target="_blank" rel="noopener noreferrer">
+		<button type="button" class="btn btn-link">logo tanda tanya</button>
+	</a> 
+</nav>
 <body>
