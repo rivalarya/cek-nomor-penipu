@@ -17,7 +17,24 @@
 	</div>
 </div>
 
-<div class="container text-center">
+<div class="container border border-primary">
+	<div class="row">
+			<div class="col-7 text-left">				
+				<h4 class="nomor-telepon-home">nama</h4>
+				<h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
+			</div>
+			<div class="col-3">
+				<img src="" class="bukti-home" alt="bukti">
+			</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md nomor-tidak-ditemukan">
+		<b>nomor tidak ditemukan</b>
+	</div>
+</div>
+<div class="container text-center tambahkan-nomor">
 	<div class="row justify-content-center">
 		<div class="col-6 bg-secondary rounded-pill p-1">
 			<a class="btn btn-primary" href="<?= base_url('tambah'); ?>" role="button">Tambahkan Nomor</a>

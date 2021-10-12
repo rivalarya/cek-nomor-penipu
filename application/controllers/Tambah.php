@@ -3,10 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tambah extends CI_Controller {
 
+    public function __construct()
+	{
+	    parent::__construct();
+	    $this->load->model('m_tambah');
+	}
+
 	public function index()
 	{
+        $query = $this->db->query("SELECT id FROM nomor WHERE nomor_telepon = 0853");
+        foreach ($query->result() as $row)
+{
+        $data['cel'] = $row->id;
+};
 		$this->load->view('templates/header');
-		$this->load->view('tambah');
+		$this->load->view('tambah', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -19,12 +30,15 @@ class Tambah extends CI_Controller {
             $nama = $this->input->post('nama');
         }
         $tgl_kejadian = $this->input->post('tgl_kejadian');
+        // $this->m_tambah->cekNomor($this->input->post('nomor_telepon_pelaku'));
         $nomor_telepon_pelaku = $this->input->post('nomor_telepon_pelaku');
+        if (strpos($nomor_telepon_pelaku, "0")) {
+            echo str_replace("0", "+62", $nomor_telepon_pelaku);
+        }
         $keterangan = $this->input->post('keterangan');
 
         $this->form_validation->set_rules('nomor_telepon_pelaku', 'Nomor Telepon', 'required');
         $this->form_validation->set_rules('tgl_kejadian', 'Tanggal Kejadian', 'required');
-        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
         if($this->form_validation->run() == false){
         	$this->load->view('templates/header');
 			$this->load->view('tambah');
@@ -38,9 +52,10 @@ class Tambah extends CI_Controller {
         }else if ($_FILES['bukti1'] != null && $_FILES['bukti2'] != null && $_FILES['bukti3'] != null){
             $gmbr = 3;
         }else {
-            echo "nk";
+            echo "Ada kesalahan, silahkan refresh halaman lalu masukan data dengan benar.";
         }
-        echo $gmbr;
+        // echo $gmbr;
+
         for($i=1;$i<=$gmbr;$i++){
             $bukti = $_FILES["bukti$i"];         
                 if(!$bukti == ''){

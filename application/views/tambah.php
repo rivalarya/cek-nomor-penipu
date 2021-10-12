@@ -1,4 +1,4 @@
-
+<?= $cel ?>
 <div class="container m-auto">
     <div class="row justify-content-center border">
         <div class="col ">
