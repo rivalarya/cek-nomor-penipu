@@ -33,7 +33,7 @@ $(document).ready(function(){
                                     </h4>
                                     <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
                                     <h5 class="lihat-selengkapnya-home">
-                                      <a href="nomorditemukan/${data[0].nomor_telepon}"> Lihat selengkapnya </a>
+                                      <a href="nomorditemukan"> Lihat selengkapnya </a>
                                     </h5>
                                   </div>
                                 <div class="row row-cols-2 bukti-home">
@@ -41,7 +41,6 @@ $(document).ready(function(){
                               </div>
                           </div> `);
             $(".container-fluid.wave").after(tampil);
-            $(".nomor_ditemukan").append(tampil);
 
             $('.jmlh-pelapor').text(data.length)
 
@@ -120,26 +119,24 @@ $(document).ready(function(){
 // script ker page nomor ditemukan
 $('#ditemukan').ready(() => {
 
-  setTimeout(() => {
-    $.getJSON("cari", function(data){
+  // setTimeout(() => {
+    $.getJSON("nomorditemukan/cari", function(data){
 
-        let tampil = $(`<div class="container border border-primary">
-                              <div class="row">
-                                  <div class="col-8 text-left mt-3">				
-                                    <h4 class="nomor-telepon-home">
-                                       ${data[0].nomor_telepon}
-                                    </h4>
-                                    <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
-                                    <h5 class="lihat-selengkapnya-home">
-                                      <a href="nomorditemukan/${data[0].nomor_telepon}"> Lihat selengkapnya </a>
-                                    </h5>
-                                  </div>
-                                <div class="row row-cols-2 bukti-home">
-                                  </div>
-                              </div>
-                          </div> `);
-            $(".nomor_ditemukan").append(tampil);
-
+        // let tampil = $(`<div class="container border border-primary">
+        //                       <div class="row">
+        //                           <div class="col-8 text-left mt-3">				
+        //                             <h4 class="nomor-telepon-home">
+        //                                ${data[0].nomor_telepon}
+        //                             </h4>
+        //                             <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
+        //                           </div>
+        //                         <div class="row row-cols-2 bukti-home">
+        //                           </div>
+        //                       </div>
+        //                   </div> `);
+        //     $(".nomor_ditemukan").append(tampil);
+      $('.nomor-telepon-home').text(data[0].nomor_telepon)
+      
             $('.jmlh-pelapor').text(data.length)
 
             for (let i = 0; i < data.length; i++) {
@@ -147,15 +144,40 @@ $('#ditemukan').ready(() => {
               if(i >= 4){
                 let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
                 $(".bukti-home").append(lihat);
+                $(".bukti-pelapor").append(lihat); // ker page pelapor
                 break;
               }
-              let masukanBukti = $(`<img src="../assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+              let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
               $(".row.row-cols-2").append(masukanBukti);
-            }
+      }
 
-      })
+      // ker pelapor
+      
+      for (let i = 0; i < data.length; i++) {
+
+        let tampil = $(`<div class="row mt-3">
+                              <div class="col-2">
+                                <img src="./assets/img/user.png" alt="profil" class="profil">
+                              </div>
+                                <div class="col-7 text-left">				
+                                  <h4 class="nama-pelapor ml-3">${data[i].nama_pelapor}</h4>
+                                  <h6 class="tglkejadian-pelapor ml-3">${data[i].tgl_kejadian}</h6>
+                                  <p class="keterangan-pelapor ml-2">${data[i].keterangan}</p>
+                                </div>
+                                <div class="row row-cols-2 bukti-pelapor d-none"
+                                </div>
+                            </div>`);
+        $(".container.border.border-primary.pelapor").append(tampil);
+              
+        // masalah, gambarna ngahiji jeng nu batur
+        // let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+        // $(".row.row-cols-2.bukti-pelapor").append(masukanBukti);
+      }
+      
+    }) // end getJSOn
+  
     
-  }, 500);
+  // }, 500);
 })
 // script page tambah 
   //script tambah foto
@@ -225,3 +247,5 @@ $('#ditemukan').ready(() => {
 
     // end script hapus foto
 // end script page tambah
+
+// lightbox

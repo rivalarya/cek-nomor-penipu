@@ -5,6 +5,10 @@ class Nomorditemukan extends CI_Controller {
 
 	public function index()
 	{
+        $sesi = $this->session->userdata('nomor');
+		if($sesi == null)
+			redirect('home');
+
         $data['tes'] = $this->session->userdata('nomor');
 		$data['about'] = "./assets/img/about.png";
 		$this->load->view('templates/header', $data);

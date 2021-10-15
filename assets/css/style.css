@@ -122,15 +122,43 @@ div.col-7.text-left .keterangan {
 	font-size: 1.3rem;
 }
 
-.row.row-cols-2.bukti-home{
-	max-width: 30%;
+.row.row-cols-2.bukti-home,
+.bukti-pelapor {
+	max-width: 35%;
 }
 
-.size-bukti-home {
+img.size-bukti-home {
 	display: flex;
 	justify-content: end;
 	padding: 1%;
 	margin-top: .6%;
+	width: 25%;
+}
+
+/* end */
+
+/* page nomorditemukan */
+div.user-nomorditemukan{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.container.border.border-primary.pelapor,
+.container.border.border-primary.nomor_ditemukan {
+	/* background-color: var(--pallete1); */
+	padding: 2%;
+}
+
+.container.border.border-primary.pelapor {
+	width: 65%;
+	margin-top: 5px;
+}
+.nama-pelapor{
+
+}
+.keterangan-pelapor{
+	padding: 2%
 }
 
 /* end */
@@ -164,7 +192,8 @@ img.about {
 		font-size: 0.9rem;
 	}
 
-	div.col-7.text-left .tglupload {
+	div.col-7.text-left .tglupload,
+	.tglkejadian-pelapor {
 		font-size: 0.5rem;
 		margin-top: -10px;
 	}
@@ -218,7 +247,8 @@ img.about {
 		font-size: 1.7rem;
 	}
 
-	div.col-7.text-left .tglupload {
+	div.col-7.text-left .tglupload,
+	.tglkejadian-pelapor {
 		font-size: 0.8rem;
 		margin-top: -10px;
 	}
@@ -236,7 +266,8 @@ img.about {
 		max-width: 6.666667% !important;
 	}
 
-	div.col-7.text-left .tglupload {
+	div.col-7.text-left .tglupload,
+	.tglkejadian-pelapor {
 		font-size: 0.7rem;
 		margin-top: -10px;
 	}

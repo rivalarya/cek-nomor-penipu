@@ -13,7 +13,7 @@
 	<div class="row">
 		<div class="col-md text-center">
 				<span class="kode">+62
-					<input class="searchnomor ml-2" id="nomor" type="number" placeholder="Masukan nomor disini">
+					<input class="searchnomor ml-2" id="nomor" type="text" placeholder="Masukan nomor disini">
 				</span>
 				<button type="button" id="cari" class="btn-cari ">Cari</button>
 			<div class="container text-left mt-1">
