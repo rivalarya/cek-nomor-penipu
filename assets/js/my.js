@@ -1,31 +1,61 @@
 $(document).ready(function(){
-  
-document.getElementById('cari').addEventListener("click", function() {
- let str = document.getElementById('nomor').value;
-    showResult(str)
-    console.log(str)
-});
-document.getElementById('cari').addEventListener("click", function() {
- let str = document.getElementById('nomor').value;
-    cekNomorSudahAdaAtauBelum(str)
-    console.log(str)
-});
+
+  document.getElementById('cari').addEventListener("click", function() {
+    let str = document.getElementById('nomor').value;
+    const divhasil = $('.container.border.border-primary')[0]
+      //mun div nu mungkus hasil ges aya, nonaktifken click
+     if( str == '' && divhasil == null){
+        alert('Masukan nomor')
+
+      }
+    if(divhasil == null && str != ''){
+        showResult(str)
+      }
+    });
 
   function showResult(str) {
       const xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           const data = JSON.parse(this.responseText);
-          if (data == null) {
-            console.log("data kosong")
+          if (data <= 0) {
+            alert("nomor tidak ditemukan")
           }else{
             console.log(data);
             // console.log(str);
             // console.log(typeof(data));
             // console.log(data[0].id);
-            $('.nomor-telepon-home').text(data[0].nomor_telepon)
+            let tampil = $(`<div class="container border border-primary">
+                              <div class="row">
+                                  <div class="col-8 text-left mt-3">				
+                                    <h4 class="nomor-telepon-home">
+                                       ${data[0].nomor_telepon}
+                                    </h4>
+                                    <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
+                                    <h5 class="lihat-selengkapnya-home">
+                                      <a href="nomorditemukan/${data[0].nomor_telepon}"> Lihat selengkapnya </a>
+                                    </h5>
+                                  </div>
+                                <div class="row row-cols-2 bukti-home">
+                                  </div>
+                              </div>
+                          </div> `);
+            $(".container-fluid.wave").after(tampil);
+            $(".nomor_ditemukan").append(tampil);
+
             $('.jmlh-pelapor').text(data.length)
-            $('.bukti-home').attr("src","./assets/img/bukti/"+data[0].bukti)
+
+            for (let i = 0; i < data.length; i++) {
+
+              if(i >= 4){
+                let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
+              $(".bukti-home").append(lihat);
+              break;
+              }
+              let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+              $(".row.row-cols-2").append(masukanBukti);
+            }
+
           }
         };
       };
@@ -33,29 +63,100 @@ document.getElementById('cari').addEventListener("click", function() {
       xmlhttp.send();
     };
 
+  // $(document).click( () => {
 
-function cekNomorSudahAdaAtauBelum(str) {
-    
-      const xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          const data = JSON.stringify(this.responseText);
-          console.log(data)
-          console.log(typeof(data));
-          // maksud data.length > 2 nyaeta mun data aya isian, berarti nomer ges aya
-          if (data.length > 2){
-            console.log("nomor sudah ada")
-          }else{
-            console.log("nomor belum ada")
-          }
-        };
-      };
-      xmlhttp.open("GET", 'home/ceknomorsudahadaataubelum/' + str, true);
-      xmlhttp.send();
+  //     const xmlhttp = new XMLHttpRequest();
+  //     xmlhttp.onreadystatechange = function() {
+  //       if (this.readyState == 4 && this.status == 200) {
+  //         const data = JSON.parse(this.responseText);
+  //         if (data <= 0) {
+  //           alert("nomor tidak ditemukan")
+  //         }else{
+  //           console.log(data);
+  //           let tampil = $(`<div class="container border border-primary">
+  //                             <div class="row">
+  //                                 <div class="col-8 text-left mt-3">				
+  //                                   <h4 class="nomor-telepon-home">
+  //                                      ${data[0].nomor_telepon}
+  //                                   </h4>
+  //                                   <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
+  //                                   <h5 class="lihat-selengkapnya-home">
+  //                                     <a href="nomorditemukan/${data[0].nomor_telepon}"> Lihat selengkapnya </a>
+  //                                   </h5>
+  //                                 </div>
+  //                               <div class="row row-cols-2 bukti-home">
+  //                                 </div>
+  //                             </div>
+  //                         </div> `);
+  //           $(".nomor_ditemukan").append(tampil);
 
-    }
+  //           $('.jmlh-pelapor').text(data.length)
+
+  //           for (let i = 0; i < data.length; i++) {
+
+  //             if(i >= 4){
+  //               let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
+  //               $(".bukti-home").append(lihat);
+  //               break;
+  //             }
+  //             let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+  //             $(".row.row-cols-2").append(masukanBukti);
+  //           }
+
+  //         }
+  //       };
+  //     };
+  //     xmlhttp.open("GET", 'nomorditemukan/cari', true);
+  //     xmlhttp.send();
+  // })
+
+    //ker event pas nomor contoh diklik
+    const contoh = $('.contoh')
+    contoh.click(() => {
+      document.getElementById('nomor').value = 83 // manual
+    })
 
   });
+// script ker page nomor ditemukan
+$('#ditemukan').ready(() => {
+
+  setTimeout(() => {
+    $.getJSON("cari", function(data){
+
+        let tampil = $(`<div class="container border border-primary">
+                              <div class="row">
+                                  <div class="col-8 text-left mt-3">				
+                                    <h4 class="nomor-telepon-home">
+                                       ${data[0].nomor_telepon}
+                                    </h4>
+                                    <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
+                                    <h5 class="lihat-selengkapnya-home">
+                                      <a href="nomorditemukan/${data[0].nomor_telepon}"> Lihat selengkapnya </a>
+                                    </h5>
+                                  </div>
+                                <div class="row row-cols-2 bukti-home">
+                                  </div>
+                              </div>
+                          </div> `);
+            $(".nomor_ditemukan").append(tampil);
+
+            $('.jmlh-pelapor').text(data.length)
+
+            for (let i = 0; i < data.length; i++) {
+
+              if(i >= 4){
+                let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
+                $(".bukti-home").append(lihat);
+                break;
+              }
+              let masukanBukti = $(`<img src="../assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+              $(".row.row-cols-2").append(masukanBukti);
+            }
+
+      })
+    
+  }, 500);
+})
 // script page tambah 
   //script tambah foto
     

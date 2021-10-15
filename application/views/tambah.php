@@ -1,4 +1,4 @@
-<?= $cel ?>
+<? ?>
 <div class="container m-auto">
     <div class="row justify-content-center border">
         <div class="col ">
@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group col-6">  
                     <label for="nomor_telepon_pelaku">Nomor Telepon Pelaku</label>
-                    <input type="text" name="nomor_telepon_pelaku" class="form-control" id="nomor_telepon_pelaku" required>            
+                    <input type="number" name="nomor_telepon_pelaku" class="form-control" id="nomor_telepon_pelaku" required>            
                 </div>
             </div>
             <div class="form-group row">  

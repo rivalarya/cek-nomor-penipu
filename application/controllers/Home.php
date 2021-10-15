@@ -27,14 +27,19 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('templates/header');
+		$data['about'] = "./assets/img/about.png";
+		$this->load->view('templates/header', $data);
 		$this->load->view('index');
 		$this->load->view('templates/footer');
 	}
 
     public function cari($query)
     {
-    	$ko = "%".$query."%";
+    	// $ko = "%".$query."%"; // ker tes hngkl
+    	$ko = "%".$query;
+
+		$this->session->set_userdata('nomor', $ko); // set session ker dipake di nomorditemukan
+
 	if ($this->db->simple_query("SELECT * FROM pelapor where nomor_telepon LIKE '$ko'"))
 		{
 		    $hasil = $this->db->query("SELECT * FROM pelapor where nomor_telepon LIKE '$ko'");
@@ -46,13 +51,6 @@ class Home extends CI_Controller {
 		}
 			
     }
-
-	public function tambah()
-	{
-		$this->load->view('templates/header');
-		$this->load->view('tambah');
-		$this->load->view('templates/footer');
-	}
 
 	public function cekNomorSudahAdaAtauBelum($nomor)
 	{

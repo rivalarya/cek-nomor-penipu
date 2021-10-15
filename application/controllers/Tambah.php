@@ -11,13 +11,9 @@ class Tambah extends CI_Controller {
 
 	public function index()
 	{
-        $query = $this->db->query("SELECT id FROM nomor WHERE nomor_telepon = 0853");
-        foreach ($query->result() as $row)
-{
-        $data['cel'] = $row->id;
-};
-		$this->load->view('templates/header');
-		$this->load->view('tambah', $data);
+        $data['about'] = "./assets/img/about.png";
+		$this->load->view('templates/header', $data);
+		$this->load->view('tambah', );
 		$this->load->view('templates/footer');
 	}
 
