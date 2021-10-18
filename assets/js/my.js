@@ -1,5 +1,5 @@
+let buktiArr = []; // sekumpulan id_bukti ti kabeh row
 $(document).ready(function(){
-
   document.getElementById('cari').addEventListener("click", function() {
     let str = document.getElementById('nomor').value;
     const divhasil = $('.container.border.border-primary')[0]
@@ -13,7 +13,8 @@ $(document).ready(function(){
       }
     });
 
-  function showResult(str) {
+  
+    function showResult(str) {
       const xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -25,8 +26,10 @@ $(document).ready(function(){
             // console.log(str);
             // console.log(typeof(data));
             // console.log(data[0].id);
+         
+
             let tampil = $(`<div class="container border border-primary">
-                              <div class="row">
+                              <div class="row"> <span class="id_bukti d-none">${data[0].id_bukti}</span>
                                   <div class="col-8 text-left mt-3">				
                                     <h4 class="nomor-telepon-home">
                                        ${data[0].nomor_telepon}
@@ -45,22 +48,61 @@ $(document).ready(function(){
             $('.jmlh-pelapor').text(data.length)
 
             for (let i = 0; i < data.length; i++) {
+              buktiArr.push(data[i].id_bukti); // ngasupken id_bukti kana array
 
-              if(i >= 4){
-                let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
-              $(".bukti-home").append(lihat);
-              break;
-              }
-              let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
-              $(".row.row-cols-2").append(masukanBukti);
+              cariBukti(data[i].id_bukti) //ker foto bukti
+
             }
+
+            // for (let i = 0; i < data.length; i++) {
+
+            //   if(i >= 4){
+            //     let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
+            //   $(".bukti-home").append(lihat);
+            //   break;
+            //   }
+            //   let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+            //   $(".row.row-cols-2").append(masukanBukti);
+            // }
 
           }
         };
       };
       xmlhttp.open("GET", 'home/cari/' + str, true);
       xmlhttp.send();
+        
     };
+
+  //kode ker neangan gambar
+  let countGambar = 1;
+  let jmlhGambar = 0;  
+  function cariBukti(id_bukti) {
+
+    $.getJSON("home/cariBukti/" + id_bukti, function (data) {
+      // console.log(data)
+      // countGambar += data.length;
+      jmlhGambar += data.length;
+
+      if ($(".row.row-cols-2")[0].childNodes.length >= 5) { // mun isi tina pembungkus ieu lewih ti 4
+        let lihat = $(`<p class="text-left">dan ${jmlhGambar - 4} lainnya</p>`)
+        $(".bukti-home").append(lihat);
+        $(".bukti-pelapor").append(lihat); // ker page pelapor              
+      } 
+      
+        for (let i = 0; i < data.length; i++) {
+          // console.log(data.length)
+          // console.log(countGambar)
+          if (countGambar >= 5) break;
+          
+          let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+          $(".row.row-cols-2").append(masukanBukti);
+      countGambar += 1;
+
+      
+      }
+      
+    }) // end getJSOn    
+  }
 
   // $(document).click( () => {
 
@@ -80,7 +122,7 @@ $(document).ready(function(){
   //                                   </h4>
   //                                   <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
   //                                   <h5 class="lihat-selengkapnya-home">
-  //                                     <a href="nomorditemukan/${data[0].nomor_telepon}"> Lihat selengkapnya </a>
+  //                                     <a href="nomorditemukan"> Lihat selengkapnya </a>
   //                                   </h5>
   //                                 </div>
   //                               <div class="row row-cols-2 bukti-home">
@@ -137,7 +179,7 @@ $('#ditemukan').ready(() => {
         //     $(".nomor_ditemukan").append(tampil);
       $('.nomor-telepon-home').text(data[0].nomor_telepon)
       
-            $('.jmlh-pelapor').text(data.length)
+      $('.jmlh-pelapor').text(data.length)
 
             for (let i = 0; i < data.length; i++) {
 

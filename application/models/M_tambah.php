@@ -13,21 +13,28 @@ class M_tambah extends CI_Model{
             } 
     }  
 
-    public function cekNomor($nomor)
+    public function tambahTabelBukti($id, $id_bukti, $bukti)
     {
-         if ($this->db->simple_query("SELECT nomor_telepon FROM nomor WHERE nomor_telepon = $nomor"))
-            {
-                $nomor_telepon_pelaku = $this->db->query("SELECT id FROM nomor WHERE nomor_telepon = $nomor");
-                return;
-            }
-            else{
-                $data = array(
-                'nomor_telepon' => $nomor
-                 );
-                $this->db->insert("nomor", $data);
-                $nomor_telepon_pelaku = $this->input->post('nomor_telepon_pelaku');
-                return;
-            } 
+       
+        $data = array(
+            'id' => $id,
+            'id_bukti' => $id_bukti,
+            'bukti' => $bukti
+        );
+        $this->db->insert('bukti', $data);
+    }
+
+    public function tambahTabelpelapor($id, $nama, $nomor_telepon_pelaku, $tgl_kejadian,$keterangan,$id_bukti)
+    {       
+        $data = array(
+            'id' => $id,
+            'nama_pelapor' => html_escape($nama),
+            'nomor_telepon' => html_escape($nomor_telepon_pelaku),
+            'tgl_kejadian' => $tgl_kejadian,
+            'keterangan' => html_escape($keterangan),
+            'id_bukti' => $id_bukti
+        );
+        $this->db->insert('pelapor', $data);
     }
     
        

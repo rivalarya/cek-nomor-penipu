@@ -52,6 +52,23 @@ class Home extends CI_Controller {
 			
     }
 
+    public function cariBukti($id_bukti)
+    {
+    	
+		// $id_bukti = $this->session->userdata('id_bukti');
+
+		if ($this->db->simple_query("SELECT id_bukti FROM bukti where id_bukti LIKE '$id_bukti'"))
+		{
+		    $hasil = $this->db->query("SELECT bukti FROM bukti where id_bukti LIKE '$id_bukti'");
+		   
+			echo json_encode($hasil->result_array());
+		}
+	else{
+		      echo "Query failed!";
+		}
+			
+    }
+
 	public function cekNomorSudahAdaAtauBelum($nomor)
 	{
 	    $this->m_tambah->nomorTeleponSudahAdaAtauBelum($nomor);

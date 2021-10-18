@@ -19,6 +19,9 @@ class Tambah extends CI_Controller {
 
 	public function tambah_data()
     {
+        $id_bukti = time();
+        // $this->session->set_userdata('id_bukti', $id_bukti); // set session ker dipake di nomorditemukan ker neang foto
+
         $id = $this->input->post('id');
         if($this->input->post('nama') == ''){
             $nama = 'Tanpa nama';
@@ -28,9 +31,6 @@ class Tambah extends CI_Controller {
         $tgl_kejadian = $this->input->post('tgl_kejadian');
         // $this->m_tambah->cekNomor($this->input->post('nomor_telepon_pelaku'));
         $nomor_telepon_pelaku = $this->input->post('nomor_telepon_pelaku');
-        if (strpos($nomor_telepon_pelaku, "0")) {
-            echo str_replace("0", "+62", $nomor_telepon_pelaku);
-        }
         $keterangan = $this->input->post('keterangan');
 
         $this->form_validation->set_rules('nomor_telepon_pelaku', 'Nomor Telepon', 'required');
@@ -68,16 +68,9 @@ class Tambah extends CI_Controller {
                     }
                 }
             
-                $data = array(
-                    'id' => $id,
-                    'nama_pelapor' => html_escape($nama),
-                    'nomor_telepon' => html_escape($nomor_telepon_pelaku),
-                    'tgl_kejadian' => $tgl_kejadian,
-                    'keterangan' => html_escape($keterangan),
-                    'bukti' => $bukti
-                );
-                $this->db->insert('pelapor', $data);
+                $this->m_tambah->tambahTabelBukti($id,$id_bukti, $bukti);
             }
+            $this->m_tambah->tambahTabelpelapor($id, $nama, $nomor_telepon_pelaku, $tgl_kejadian,$keterangan,$id_bukti);
             redirect('home');
 
         }
