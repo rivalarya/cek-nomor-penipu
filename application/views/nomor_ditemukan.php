@@ -10,7 +10,7 @@
                     </div>
                 <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
                 </div>
-            <div class="row row-cols-2 bukti-pelapor">
+            <div class="row row-cols-2 bukti-pelapor bukti-semua-pelapor">
                 </div>
             </div>
         </div>

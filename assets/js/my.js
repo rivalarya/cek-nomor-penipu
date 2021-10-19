@@ -193,8 +193,9 @@ $('#ditemukan').ready(() => {
                 $(".bukti-pelapor").append(lihat); // ker page pelapor
                 break;
               }
-              let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
-              $(".row.row-cols-2").append(masukanBukti);
+              // let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+              // $(".row.row-cols-2").append(masukanBukti);
+              cariBuktiSelengkapnya(data[i].bukti);
       }
 
       // ker pelapor
@@ -202,7 +203,7 @@ $('#ditemukan').ready(() => {
       for (let i = 0; i < data.length; i++) {
         // console.log("ieu data di pelapor " + data[i].id_bukti)
 
-        let tampil = $(`<div class="row mt-3">
+        let tampil = $(`<div class="row mt-3 mb-3">
                               <div class="col-2">
                                 <img src="./assets/img/user.png" alt="profil" class="profil">
                               </div>
@@ -241,7 +242,15 @@ function cariBuktiSelengkapnya(id) {
   // console.log("ieu data di caribuktki " + id)
   $.getJSON("nomorditemukan/cariselengkapnya/" + id, function (data) {
     console.log("ieu data di seralized ", data)
-    // const tempat = data;
+
+    // ker bukti semua pelapor foto 
+    for (let i = 0; i < data.length; i++) {
+      
+      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+      $(".row.row-cols-2.bukti-semua-pelapor").append(masukanBukti);
+    }
+
+    //ker perbaris
     for (let i = 0; i < data.length; i++) {
       console.log("ieu data di getJSOn " + data[i].bukti)
             
