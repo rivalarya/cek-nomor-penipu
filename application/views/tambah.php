@@ -1,6 +1,6 @@
 <? ?>
 <div class="container m-auto">
-    <div class="row justify-content-center border">
+    <div class="row justify-content-center border shadow p-3 mb-5 bg-white rounded">
         <div class="col ">
                 <?php echo validation_errors(); ?>
             <?= form_open_multipart('tambah/tambah_data'); ?>

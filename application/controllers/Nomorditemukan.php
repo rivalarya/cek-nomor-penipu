@@ -6,10 +6,8 @@ class Nomorditemukan extends CI_Controller {
 	public function index()
 	{
         $sesi = $this->session->userdata('nomor');
-		if($sesi == null)
-			redirect('home');
-
-        $data['tes'] = $this->session->userdata('nomor');
+		if($sesi == null) redirect('home');
+		
 		$data['about'] = "./assets/img/about.png";
 		$this->load->view('templates/header', $data);
 		$this->load->view('nomor_ditemukan');
@@ -20,9 +18,9 @@ class Nomorditemukan extends CI_Controller {
     {
 		//kode ieu disalin di contoler home
 		$no = $this->session->userdata('nomor');
-		if ($this->db->simple_query("SELECT * FROM pelapor where nomor_telepon LIKE '$no'"))
+		if ($this->db->simple_query("SELECT * FROM pelapor WHERE nomor_telepon LIKE '$no'"))
 			{
-				$hasil = $this->db->query("SELECT * FROM pelapor where nomor_telepon LIKE '$no'");
+				$hasil = $this->db->query("SELECT * FROM pelapor WHERE nomor_telepon LIKE '$no' ORDER BY `pelapor`.`tgl_kejadian` DESC");
 			
 				echo json_encode($hasil->result_array());
 			}

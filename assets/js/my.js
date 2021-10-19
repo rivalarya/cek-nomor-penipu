@@ -1,14 +1,20 @@
 
 $(document).ready(function(){
 
-let disabledOnOff = bool => $("#cari").attr("disabled", bool);
+  let disabledOnOff = bool => {
+    $("#cari").attr("disabled", bool);
+    setTimeout(() => {
+      $("#cari").attr("disabled", false);
+      
+    }, 900);
+  }
 
   $('#cari').click(() => {  
     let str = $('#nomor')[0].value;
     const divhasil = $('.container.border.border-primary')[0]
     jmlhGambar = 0; // pengreset variabel di fungsi cariBukti
     disabledOnOff(true) // button cari disabled
-     if( str == '' && divhasil == null) alert('Masukan nomor') //mun div nu mungkus hasil ges aya, nonaktifken click
+    if (str == '') alert('Masukan nomor') //mun div nu mungkus hasil ges aya, nonaktifken click
  
     if (str != '') showResult(str)
   });
@@ -20,12 +26,10 @@ let disabledOnOff = bool => $("#cari").attr("disabled", bool);
           const data = JSON.parse(this.responseText);
           if (data <= 0) {
             alert("nomor tidak ditemukan")
-            disabledOnOff(false); // button cari enabled
           }else{
             console.log(data);
             setTimeout(() => {
               alert("nomor ditemukan")
-            disabledOnOff(false); // button cari enabled
             }, 700);
 
             if ($('.container.border.border-primary')[0] != null) $('.container.border.border-primary').remove()
@@ -87,7 +91,7 @@ let disabledOnOff = bool => $("#cari").attr("disabled", bool);
     //ker event pas nomor contoh diklik
     const contoh = $('.contoh')
     contoh.click(() => {
-      document.getElementById('nomor').value = 83 // manual
+      document.getElementById('nomor').value = 87814685520 // manual
     })
 
   });

@@ -17,7 +17,7 @@
 				</span>
 				<button type="button" id="cari" class="btn-cari ">Cari</button>
 			<div class="container text-left mt-1">
-				<p class="">Masukan nomor tanpa awalan 0 atau +62. Contoh <span><a class="contoh" value="83">83</a></span></p>
+				<p class="">Masukan nomor tanpa awalan 0 atau +62. Contoh <span><a class="contoh">87814685520</a></span></p>
 			</div>
 		</div>
 	</div>

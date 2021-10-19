@@ -74,4 +74,9 @@ class Home extends CI_Controller {
 	    $this->m_tambah->nomorTeleponSudahAdaAtauBelum($nomor);
 	}
 
+	public function about()
+	{
+		$this->load->view('about');
+	}
+
 }
