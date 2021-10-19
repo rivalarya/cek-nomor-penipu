@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 	
-	<link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+	<link href="<?= base_url('assets/plugin/featherlight/featherlight.min.css') ?>" type="text/css" rel="stylesheet" />
 
 	
 </head>
