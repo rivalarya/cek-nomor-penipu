@@ -31,4 +31,18 @@ class Nomorditemukan extends CI_Controller {
 			}
 			
     }
+
+	public function cariSelengkapnya($id_bukti)
+    {
+		if ($this->db->simple_query("SELECT bukti FROM bukti where id_bukti LIKE '$id_bukti'"))
+			{
+				$hasil = $this->db->query("SELECT bukti FROM bukti where id_bukti LIKE '$id_bukti'");
+			
+				echo json_encode($hasil->result_array());
+			}
+		else{
+				echo "Query failed!";
+			}
+			
+    }
 }

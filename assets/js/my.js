@@ -49,10 +49,12 @@ $(document).ready(function(){
 
             for (let i = 0; i < data.length; i++) {
               buktiArr.push(data[i].id_bukti); // ngasupken id_bukti kana array
-
               cariBukti(data[i].id_bukti) //ker foto bukti
-
             }
+
+            // jadikeun session storage
+            const bukti = JSON.stringify(buktiArr);
+            sessionStorage.setItem('id_bukti', bukti);
 
             // for (let i = 0; i < data.length; i++) {
 
@@ -103,6 +105,8 @@ $(document).ready(function(){
       
     }) // end getJSOn    
   }
+
+ 
 
   // $(document).click( () => {
 
@@ -196,6 +200,7 @@ $('#ditemukan').ready(() => {
       // ker pelapor
       
       for (let i = 0; i < data.length; i++) {
+        // console.log("ieu data di pelapor " + data[i].id_bukti)
 
         let tampil = $(`<div class="row mt-3">
                               <div class="col-2">
@@ -206,7 +211,7 @@ $('#ditemukan').ready(() => {
                                   <h6 class="tglkejadian-pelapor ml-3">${data[i].tgl_kejadian}</h6>
                                   <p class="keterangan-pelapor ml-2">${data[i].keterangan}</p>
                                 </div>
-                                <div class="row row-cols-2 bukti-pelapor d-none"
+                                <div class="row row-cols-2 bukti-pelapor ${data[i].id_bukti}">
                                 </div>
                             </div>`);
         $(".container.border.border-primary.pelapor").append(tampil);
@@ -214,13 +219,41 @@ $('#ditemukan').ready(() => {
         // masalah, gambarna ngahiji jeng nu batur
         // let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
         // $(".row.row-cols-2.bukti-pelapor").append(masukanBukti);
+
+        cariBuktiSelengkapnya(data[i].id_bukti); 
       }
       
     }) // end getJSOn
   
-    
+  
   // }, 500);
 })
+function cariBuktiSelengkapnya(id) {
+
+  const serializedData = sessionStorage.getItem('id_bukti');
+  let data = JSON.parse(serializedData);
+  //  console.log("ieu data di seralized " + data)
+  //  for (row in data) {
+  //  for (let i = 0; i < data.length; i++) {
+  //  const jlmhData = data.length;
+  //  console.log(data);
+  // console.log("ieu data di row " + data)
+  // console.log("ieu data di caribuktki " + id)
+  $.getJSON("nomorditemukan/cariselengkapnya/" + id, function (data) {
+    console.log("ieu data di seralized ", data)
+    // const tempat = data;
+    for (let i = 0; i < data.length; i++) {
+      console.log("ieu data di getJSOn " + data[i].bukti)
+            
+      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+      $(`.row.row-cols-2.bukti-pelapor.${id}`).append(masukanBukti);
+        
+    }
+  })// end getJSOn
+}
+        //  }
+      //  }
+  // }
 // script page tambah 
   //script tambah foto
     
