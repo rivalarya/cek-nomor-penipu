@@ -125,6 +125,7 @@ div.col-7.text-left .keterangan {
 .row.row-cols-2.bukti-home,
 .bukti-pelapor {
 	max-width: 35%;
+	cursor:zoom-in;
 }
 
 img.size-bukti-home {

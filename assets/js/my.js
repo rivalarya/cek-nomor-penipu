@@ -12,7 +12,6 @@ $(document).ready(function(){
         showResult(str)
       }
     });
-
   
     function showResult(str) {
       const xmlhttp = new XMLHttpRequest();
@@ -96,7 +95,7 @@ $(document).ready(function(){
           // console.log(countGambar)
           if (countGambar >= 5) break;
           
-          let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+          let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}" alt="" >`)
           $(".row.row-cols-2").append(masukanBukti);
       countGambar += 1;
 
@@ -246,7 +245,7 @@ function cariBuktiSelengkapnya(id) {
     // ker bukti semua pelapor foto 
     for (let i = 0; i < data.length; i++) {
       
-      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
       $(".row.row-cols-2.bukti-semua-pelapor").append(masukanBukti);
     }
 
@@ -254,7 +253,7 @@ function cariBuktiSelengkapnya(id) {
     for (let i = 0; i < data.length; i++) {
       console.log("ieu data di getJSOn " + data[i].bukti)
             
-      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="bukti">`)
+      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
       $(`.row.row-cols-2.bukti-pelapor.${id}`).append(masukanBukti);
         
     }

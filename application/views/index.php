@@ -19,11 +19,9 @@
 			<div class="container text-left mt-1">
 				<p class="">Masukan nomor tanpa awalan 0 atau +62. Contoh <span><a class="contoh" value="83">83</a></span></p>
 			</div>
-					
 		</div>
 	</div>
 </div>
-
 
 <div class="container text-center tambahkan-nomor">
 	<div class="row justify-content-center">

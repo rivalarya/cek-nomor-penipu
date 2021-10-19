@@ -4,5 +4,7 @@
 <script src="<?= base_url('assets/js/my.js') ?>"></script>
 <script src="<?= base_url('assets/js/popper.js') ?>"></script>
 <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
+<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
 </body>
 </html>

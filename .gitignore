@@ -1,5 +1,8 @@
 .DS_Store
 
+#biar gambar bukti tydack terbawa
+assets/img/bukti/*
+
 application/cache/*
 !application/cache/index.html
 

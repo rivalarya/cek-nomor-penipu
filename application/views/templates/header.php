@@ -7,9 +7,8 @@
 	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 	
-	<link rel="preconnect"href="https://fonts.googleapis.com">
-	<link rel="preconnect"href="https://fonts.gstatic.com"crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&family=Scheherazade+New&display=swap"rel="stylesheet">
+	<link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
 	
 </head>
 <nav class="fixed-top text-left">
