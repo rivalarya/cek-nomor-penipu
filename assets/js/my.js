@@ -1,18 +1,18 @@
 
 $(document).ready(function(){
-  document.getElementById('cari').addEventListener("click", function() {
-    let str = document.getElementById('nomor').value;
-    const divhasil = $('.container.border.border-primary')[0]
-      //mun div nu mungkus hasil ges aya, nonaktifken click
-     if( str == '' && divhasil == null){
-        alert('Masukan nomor')
 
-      }
-    if(divhasil == null && str != ''){
-        showResult(str)
-      }
-    });
-  
+let disabledOnOff = bool => $("#cari").attr("disabled", bool);
+
+  $('#cari').click(() => {  
+    let str = $('#nomor')[0].value;
+    const divhasil = $('.container.border.border-primary')[0]
+    jmlhGambar = 0; // pengreset variabel di fungsi cariBukti
+    disabledOnOff(true) // button cari disabled
+     if( str == '' && divhasil == null) alert('Masukan nomor') //mun div nu mungkus hasil ges aya, nonaktifken click
+ 
+    if (str != '') showResult(str)
+  });
+
     function showResult(str) {
       const xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
@@ -20,8 +20,15 @@ $(document).ready(function(){
           const data = JSON.parse(this.responseText);
           if (data <= 0) {
             alert("nomor tidak ditemukan")
+            disabledOnOff(false); // button cari enabled
           }else{
             console.log(data);
+            setTimeout(() => {
+              alert("nomor ditemukan")
+            disabledOnOff(false); // button cari enabled
+            }, 700);
+
+            if ($('.container.border.border-primary')[0] != null) $('.container.border.border-primary').remove()
 
             let tampil = $(`<div class="container border border-primary">
                               <div class="row"> <span class="id_bukti d-none">${data[0].id_bukti}</span>
@@ -41,9 +48,10 @@ $(document).ready(function(){
             $(".container-fluid.wave").after(tampil);
 
             $('.jmlh-pelapor').text(data.length)
-
-            for (let i = 0; i < data.length; i++) {
-              cariBukti(data[i].id_bukti) //ker foto bukti
+            
+            for (let x in data) {
+              
+              cariBukti(data[x].id_bukti) //ker foto bukti;
             }
 
           }
@@ -55,31 +63,26 @@ $(document).ready(function(){
     };
 
   //kode ker neangan gambar
-  let countGambar = 1;
   let jmlhGambar = 0;  
   function cariBukti(id_bukti) {
 
-    $.getJSON("home/cariBukti/" + id_bukti, function (data) {
+    $.getJSON("home/caribukti/" + id_bukti, function (data) {
       jmlhGambar += data.length;
 
-      if ($(".row.row-cols-2")[0].childNodes.length >= 5) { // mun isi tina pembungkus ieu lewih ti 4
+      if ($(".row.row-cols-2")[0].childNodes.length >= 4) { // mun isi tina pembungkus ieu lewih ti 4
         let lihat = $(`<p class="text-left">dan ${jmlhGambar - 4} lainnya</p>`)
         $(".bukti-home").append(lihat);
-        $(".bukti-pelapor").append(lihat); // ker page pelapor              
+        return;
       } 
       
-        for (let i = 0; i < data.length; i++) {
-          if (countGambar >= 5) break;
-          
+        for (let i in data) {
           let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}" alt="" >`)
           $(".row.row-cols-2").append(masukanBukti);
-      countGambar += 1;
-
-      
       }
       
     }) // end getJSOn    
   }
+  
 
     //ker event pas nomor contoh diklik
     const contoh = $('.contoh')
@@ -94,11 +97,11 @@ $('#ditemukan').ready(() => {
   // setTimeout(() => {
   $.getJSON("nomorditemukan/cari", function (data) {
       
-      $('.nomor-telepon-home').text(data[0].nomor_telepon)      
-      $('.jmlh-pelapor').text(data.length)
-
-            for (let i = 0; i < data.length; i++) {
-
+    $('.nomor-telepon-home').text(data[0].nomor_telepon)      
+    $('.jmlh-pelapor').text(data.length)
+    
+    for (let i in data) {
+  
               if(i >= 4){
                 let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
                 $(".bukti-home").append(lihat);
@@ -111,7 +114,7 @@ $('#ditemukan').ready(() => {
 
       // ker pelapor
       
-      for (let i = 0; i < data.length; i++) {
+      for (let i in data) {
         // console.log("ieu data di pelapor " + data[i].id_bukti)
 
         let tampil = $(`<div class="row mt-3 mb-3">
@@ -141,14 +144,14 @@ function cariBuktiSelengkapnya(id) {
     console.log("ieu data di seralized ", data)
 
     // ker bukti semua pelapor foto 
-    for (let i = 0; i < data.length; i++) {
-      
+    for (let i in data) {
+              
       let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
       $(".row.row-cols-2.bukti-semua-pelapor").append(masukanBukti);
     }
 
     //ker perbaris
-    for (let i = 0; i < data.length; i++) {
+    for (let i in data) {
       console.log("ieu data di getJSOn " + data[i].bukti)
             
       let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
