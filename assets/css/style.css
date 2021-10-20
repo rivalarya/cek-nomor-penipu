@@ -176,11 +176,64 @@ img.about {
 
 /* versi page */
 .row.text-center.justify-content-center.versi{
-	margin: min(30%, 50%);
+	margin: min(50%, 60%);
 }
 
 .row.text-center.justify-content-center.versi h1{
 	font-size: 2rem;
+}
+
+.row.text-center.justify-content-center .card{
+	border: none;
+	background-color: rgba(0, 5, 0, 0);
+}
+.blob {
+	position: absolute;
+	top: 0;
+	left: 0;
+	fill: var(--pallete2);
+	width: 40vmax;
+	z-index: -1;
+	animation: move 9s ease-in-out infinite;
+	transition: 1s;
+	transform-origin: 50% 50%;
+}
+
+.blob1 {
+	position: absolute;
+	top: 90px;
+	fill: var(--pallete2);
+	width: 40vmax;
+	z-index: -2;
+	animation: move 9s ease-in-out infinite;
+	transition: 1s;
+	transform-origin: 50% 50%;
+}
+
+@keyframes move {
+	0% {
+		transform: scale(1) translate(10px, -30px) ;
+	}
+
+	38% {
+		transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+	}
+
+	40% {
+		transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+	}
+
+	78% {
+		transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+	}
+
+	80% {
+		transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+	}
+
+	100% {
+		transform: scale(1) translate(10px, -30px);
+	}
 }
 /* end */
 

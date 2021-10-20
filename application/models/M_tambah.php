@@ -30,9 +30,9 @@ class M_tambah extends CI_Model{
             'id' => $id,
             'nama_pelapor' => html_escape($nama),
             'nomor_telepon' => html_escape($nomor_telepon_pelaku),
-            'tgl_kejadian' => $tgl_kejadian,
+            'tgl_kejadian' => html_escape($tgl_kejadian),
             'keterangan' => html_escape($keterangan),
-            'id_bukti' => $id_bukti
+            'id_bukti' => html_escape($id_bukti)
         );
         $this->db->insert('pelapor', $data);
     }

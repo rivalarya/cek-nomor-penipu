@@ -71,6 +71,7 @@ class Tambah extends CI_Controller {
                 $this->m_tambah->tambahTabelBukti($id,$id_bukti, $bukti);
             }
             $this->m_tambah->tambahTabelpelapor($id, $nama, $nomor_telepon_pelaku, $tgl_kejadian,$keterangan,$id_bukti);
+            $this->session->set_flashdata('success', 'Berhasil ditambahkan!'); 
             redirect('home');
 
         }

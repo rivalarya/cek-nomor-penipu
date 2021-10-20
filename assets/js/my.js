@@ -67,21 +67,18 @@ $(document).ready(function(){
     };
 
   //kode ker neangan gambar
-  let jmlhGambar = 0;  
+  let jmlhGambar = 0;
+  let countGambar = 1;
   function cariBukti(id_bukti) {
 
     $.getJSON("home/caribukti/" + id_bukti, function (data) {
       jmlhGambar += data.length;
-
-      if ($(".row.row-cols-2")[0].childNodes.length >= 4) { // mun isi tina pembungkus ieu lewih ti 4
-        let lihat = $(`<p class="text-left">dan ${jmlhGambar - 4} lainnya</p>`)
-        $(".bukti-home").append(lihat);
-        return;
-      } 
-      
-        for (let i in data) {
+            
+      for (let i in data) {
+          if (countGambar >= 5) break; //gmbr lebih dri 4 stop
           let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}" alt="" >`)
           $(".row.row-cols-2").append(masukanBukti);
+          countGambar +=1;
       }
       
     }) // end getJSOn    
@@ -233,3 +230,4 @@ function cariBuktiSelengkapnya(id) {
 
     // end script hapus foto
 // end script page tambah
+  
