@@ -102,15 +102,7 @@ $('#ditemukan').ready(() => {
     $('.jmlh-pelapor').text(data.length)
     
     for (let i in data) {
-  
-              if(i >= 4){
-                let lihat = $(`<p class="text-left">dan ${data.length - 4} lainnya</p>`)
-                $(".bukti-home").append(lihat);
-                $(".bukti-pelapor").append(lihat); // ker page pelapor
-                break;
-              }
-              
-              cariBuktiSelengkapnya(data[i].bukti);
+        cariBuktiSelengkapnya(data[i].bukti);
       }
 
       // ker pelapor
@@ -123,8 +115,8 @@ $('#ditemukan').ready(() => {
                                 <img src="./assets/img/user.png" alt="profil" class="profil">
                               </div>
                                 <div class="col-7 text-left">				
-                                  <h4 class="nama-pelapor ml-3">${data[i].nama_pelapor}</h4>
-                                  <h6 class="tglkejadian-pelapor ml-3">${data[i].tgl_kejadian}</h6>
+                                  <h4 class="nama-pelapor ml-1">${data[i].nama_pelapor}</h4>
+                                  <h6 class="tglkejadian-pelapor ml-1">${data[i].tgl_kejadian}</h6>
                                   <p class="keterangan-pelapor ml-2">${data[i].keterangan}</p>
                                 </div>
                                 <div class="row row-cols-2 bukti-pelapor ${data[i].id_bukti}">

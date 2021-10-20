@@ -122,9 +122,13 @@ div.col-7.text-left .keterangan {
 	font-size: 1.3rem;
 }
 
-.row.row-cols-2.bukti-home,
-.bukti-pelapor {
+.row.row-cols-2.bukti-home, .bukti-semua-pelapor{
 	max-width: 35%;
+	cursor:zoom-in;
+}
+
+.bukti-pelapor {
+	max-width: 27%;
 	cursor:zoom-in;
 }
 
@@ -155,11 +159,15 @@ div.user-nomorditemukan{
 	width: 65%;
 	margin-top: 5px;
 }
-.nama-pelapor{
 
+.nomor-telepon-home{
+	font-size: min(1.3rem, 2rem);
+}
+.nama-pelapor{
+font-size: min(1.3rem, 2rem);
 }
 .keterangan-pelapor{
-	padding: 2%
+	padding: 1%
 }
 
 /* end */
@@ -274,7 +282,7 @@ img.about {
 	img.profil {
 		margin-top: 6px;
 		height: 30px;
-		margin-left: -4px;
+		margin-left: -2px;
 	}
 
 }
