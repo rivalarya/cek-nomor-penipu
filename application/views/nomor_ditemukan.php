@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-    <div class="container border border-primary pelapor">
+    <div class="container pelapor">
         
     </div>
     </div>

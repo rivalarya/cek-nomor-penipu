@@ -149,25 +149,25 @@ div.user-nomorditemukan{
 	justify-content: flex-start;
 }
 
-.container.border.border-primary.pelapor,
+.container.pelapor,
 .container.border.border-primary.nomor_ditemukan {
 	/* background-color: var(--pallete1); */
 	padding: 2%;
 }
 
-.container.border.border-primary.pelapor {
-	width: 65%;
+.container.pelapor {
+	width: 67%;
 	margin-top: 5px;
 }
 
 .nomor-telepon-home{
-	font-size: min(1.3rem, 2rem);
+	font-size: min(1.2rem, 1.7rem);
 }
 .nama-pelapor{
-font-size: min(1.3rem, 2rem);
+font-size: min(1.3rem, 1.7rem);
 }
 .keterangan-pelapor{
-	padding: 1%
+	padding: .7%
 }
 
 /* end */

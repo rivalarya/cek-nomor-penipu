@@ -7,7 +7,8 @@
 	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 	
-	<link href="<?= base_url('assets/plugin/featherlight/featherlight.min.css') ?>" type="text/css" rel="stylesheet" />
+	<link href="<?= base_url('assets/plugin/featherlight/featherlight.min.css') ?>" type="text/css" rel="stylesheet" />	
+	<script src="<?= base_url('assets/plugin/sweetalert2min/dist/sweetalert2.all.min.js') ?>" type="text/javascript" charset="utf-8"></script>
 
 	
 </head>

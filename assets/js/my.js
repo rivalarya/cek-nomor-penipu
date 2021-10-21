@@ -11,10 +11,16 @@ $(document).ready(function(){
 
   $('#cari').click(() => {  
     let str = $('#nomor')[0].value;
-    const divhasil = $('.container.border.border-primary')[0]
+    // const divhasil = $('.container.border.border-primary')[0]
     jmlhGambar = 0; // pengreset variabel di fungsi cariBukti
     disabledOnOff(true) // button cari disabled
-    if (str == '') alert('Masukan nomor') //mun div nu mungkus hasil ges aya, nonaktifken click
+    if (str == '') {
+      Swal.fire({
+      icon: 'warning',
+      title: 'Masukan nomor',
+    })
+
+    } 
  
     if (str != '') showResult(str)
   });
@@ -25,11 +31,20 @@ $(document).ready(function(){
         if (this.readyState == 4 && this.status == 200) {
           const data = JSON.parse(this.responseText);
           if (data <= 0) {
-            alert("nomor tidak ditemukan")
+            Swal.fire({
+              icon: 'error',
+              title: 'Maaf',
+              text: 'Nomor tidak ditemukan...',
+              footer: `<a href="tambah">Tambahkan nomor?</a>`
+          })
+
           }else{
             console.log(data);
             setTimeout(() => {
-              alert("nomor ditemukan")
+              Swal.fire({
+              icon: 'success',
+              title: 'Nomor ditemukan!'
+            })
             }, 700);
 
             if ($('.container.border.border-primary')[0] != null) $('.container.border.border-primary').remove()
@@ -110,19 +125,19 @@ $('#ditemukan').ready(() => {
       for (let i in data) {
         // console.log("ieu data di pelapor " + data[i].id_bukti)
 
-        let tampil = $(`<div class="row mt-3 mb-3">
-                              <div class="col-2">
+        let tampil = $(`<div class="row mt-3 mb-3 p-1 border border-primary">
+                              <div class="col-2 d-flex justify-content-center">
                                 <img src="./assets/img/user.png" alt="profil" class="profil">
                               </div>
                                 <div class="col-7 text-left">				
-                                  <h4 class="nama-pelapor ml-1">${data[i].nama_pelapor}</h4>
-                                  <h6 class="tglkejadian-pelapor ml-1">${data[i].tgl_kejadian}</h6>
-                                  <p class="keterangan-pelapor ml-2">${data[i].keterangan}</p>
+                                  <h4 class="nama-pelapor">${data[i].nama_pelapor}</h4>
+                                  <h6 class="tglkejadian-pelapor">${data[i].tgl_kejadian}</h6>
+                                  <p class="keterangan-pelapor ml-1">${data[i].keterangan}</p>
                                 </div>
                                 <div class="row row-cols-2 bukti-pelapor ${data[i].id_bukti}">
                                 </div>
                             </div>`);
-        $(".container.border.border-primary.pelapor").append(tampil);
+        $(".container.pelapor").append(tampil);
 
         cariBuktiSelengkapnya(data[i].id_bukti); 
       }
@@ -213,8 +228,12 @@ function cariBuktiSelengkapnya(id) {
           $('#bukti3')[0].attributes.id.value = ganti
           $('#thumb3')[0].attributes.id.value = 'thumb2' 
         
-      }else{
-        alert("Ada kesalahan, mohon refresh halaman ini.")
+      } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Ada kesalahan...',
+            text: 'Mohon refresh halaman ini.'
+          })
       }
       $(e)[0].parentElement.remove()
       no-=1
