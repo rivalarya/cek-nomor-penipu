@@ -6,3 +6,4 @@ Fitur yg terpikirkan:
 1. Percantik desain halaman
 2. request ajax maksimal muncul 5 baris/data untuk setiap page di scroll pada page nomor_ditemukan
 3. menambah protect ddos seperti cloudfire
+4. tambah favicon
