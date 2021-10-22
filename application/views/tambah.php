@@ -2,8 +2,7 @@
 <div class="container m-auto">
     <div class="row justify-content-center border shadow p-3 mb-5 bg-white rounded">
         <div class="col">
-                <?php //echo validation_errors(); ?>
-            <?= form_open_multipart('tambah'); ?>
+            <?= form_open_multipart('tambah','id="formTambah"'); ?>
             <div class="form-row my-auto">
                 <div class="form-group col-6">
                     <label for="nama">Nama Anda (opsional)</label>
@@ -46,7 +45,7 @@
 					<?php }
 				    ?>
 
-                <button type="submit" class="btn btn-primary btn-block w-50 m-auto" name="kirim" id="kirim">Kirim</button>
+                <button type="submit" class="btn btn-primary btn-block w-50 m-auto" name="kirim" >Kirim</button>
             
             <?= form_close() ?>
 

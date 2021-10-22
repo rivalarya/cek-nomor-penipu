@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// reference the nanoid namespace
+use Hidehalo\Nanoid\Client;
+use Hidehalo\Nanoid\GeneratorInterface;
+
 class Tambah extends CI_Controller {
 
     public function __construct()
@@ -11,8 +15,9 @@ class Tambah extends CI_Controller {
 
 	public function index()
 	{
-        $id_bukti = time();
-        // $this->session->set_userdata('id_bukti', $id_bukti); // set session ker dipake di nomorditemukan ker neang foto
+        $client = new Client();
+        # more safer random generator       
+        $id_bukti = $client->generateId($size = 21, $mode = Client::MODE_DYNAMIC);
 
         $id = $this->input->post('id');
         if($this->input->post('nama') == ''){
@@ -65,6 +70,7 @@ class Tambah extends CI_Controller {
             }
             $this->m_tambah->tambahTabelpelapor($id, $nama, $nomor_telepon_pelaku, $tgl_kejadian,$keterangan,$id_bukti);
             $this->session->set_flashdata('success', 'Berhasil ditambahkan!'); 
+            
             redirect('home');
 
         }

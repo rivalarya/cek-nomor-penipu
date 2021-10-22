@@ -177,6 +177,19 @@ NOMOR_TELEPON.change(() => {
 
 //end script validation real-time
 
+// kosongkan inputan ketika di submit
+$(`[name='kirim']`).click(() => {
+
+  $(`#formTambah`).submit();
+  $(`[name='kirim']`).attr('disabled', true)
+  $(`[name='kirim']`).text('Mengirim...')
+  setTimeout(() => {
+    $('input[type="text"],input[type="date"],input[type="file"], textarea').val('');
+    $('#thumb1').attr('src', '');
+    
+  }, 400);
+})
+
   //script tambah foto
     
   // preview 1
