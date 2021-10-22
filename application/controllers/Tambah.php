@@ -11,14 +11,6 @@ class Tambah extends CI_Controller {
 
 	public function index()
 	{
-        $data['about'] = "./assets/img/about.png";
-		$this->load->view('templates/header', $data);
-		$this->load->view('tambah', );
-		$this->load->view('templates/footer');
-	}
-
-	public function tambah_data()
-    {
         $id_bukti = time();
         // $this->session->set_userdata('id_bukti', $id_bukti); // set session ker dipake di nomorditemukan ker neang foto
 
@@ -33,12 +25,13 @@ class Tambah extends CI_Controller {
         $nomor_telepon_pelaku = $this->input->post('nomor_telepon_pelaku');
         $keterangan = $this->input->post('keterangan');
 
-        $this->form_validation->set_rules('nomor_telepon_pelaku', 'Nomor Telepon', 'required');
-        $this->form_validation->set_rules('tgl_kejadian', 'Tanggal Kejadian', 'required');
+        $this->form_validation->set_rules('nomor_telepon_pelaku', '"Nomor Telepon"', 'required|integer|max_length[15]');
+        $this->form_validation->set_rules('tgl_kejadian', '"Tanggal Kejadian"', 'required');
         if($this->form_validation->run() == false){
-        	$this->load->view('templates/header');
-			$this->load->view('tambah');
-			$this->load->view('templates/footer');
+            $data['about'] = "./assets/img/about.png";
+            $this->load->view('templates/header', $data);
+            $this->load->view('tambah', );
+            $this->load->view('templates/footer');
         }else{
 
         if($_FILES['bukti1'] != null && $_FILES['bukti2'] == null && $_FILES['bukti3'] == null){
@@ -64,7 +57,7 @@ class Tambah extends CI_Controller {
                         $bukti = $this->upload->data('file_name');
                     }else{           
                         $this->session->set_flashdata('pesan','Bukti Harus Berupa Gambar!');
-                        redirect(base_url("home/tambah"));
+                        redirect(base_url("tambah"));
                     }
                 }
             
@@ -75,6 +68,7 @@ class Tambah extends CI_Controller {
             redirect('home');
 
         }
-    }
+        
+	}
 
 }

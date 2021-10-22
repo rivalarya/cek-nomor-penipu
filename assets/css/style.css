@@ -13,7 +13,6 @@
 }
 
 body {
-	/* font-family: 'IM Fell French Canon', serif; */
 	font-family: 'Scheherazade New', serif;
 	color: var(--pallete3);
 }
@@ -119,7 +118,7 @@ img.profil {
 }
 
 div.col-7.text-left .keterangan {
-	font-size: 1.3rem;
+	font-size: 1rem;
 }
 
 .row.row-cols-2.bukti-home, .bukti-semua-pelapor{
@@ -150,21 +149,25 @@ div.user-nomorditemukan{
 }
 
 .container.pelapor,
-.container.border.border-primary.nomor_ditemukan {
+.container-fluid.border.border-primary.nomor_ditemukan {
 	/* background-color: var(--pallete1); */
 	padding: 2%;
 }
 
 .container.pelapor {
-	width: 67%;
+	width: 80%;
 	margin-top: 5px;
 }
 
+.bg-pelapor{
+	background-color: rgb(8, 217, 214, .2);
+}
+
 .nomor-telepon-home{
-	font-size: min(1.2rem, 1.7rem);
+	font-size: max(.9rem, 1.3rem);
 }
 .nama-pelapor{
-font-size: min(1.3rem, 1.7rem);
+font-size: max(.9rem, 1.2rem);
 }
 .keterangan-pelapor{
 	padding: .7%
@@ -253,11 +256,11 @@ img.about {
 	}
 
 	.btn-cari {
-		padding: .9%;
+		padding: .8%;
 	}
 
 	h1 {
-		font-size: 1.3rem;
+		font-size: 1rem;
 	}
 
 	h3 {
@@ -266,7 +269,7 @@ img.about {
 
 	div.col-7.text-left .tglupload,
 	.tglkejadian-pelapor {
-		font-size: 0.5rem;
+		font-size: 0.7rem;
 		margin-top: -10px;
 	}
 

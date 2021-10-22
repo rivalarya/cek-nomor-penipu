@@ -125,7 +125,7 @@ $('#ditemukan').ready(() => {
       for (let i in data) {
         // console.log("ieu data di pelapor " + data[i].id_bukti)
 
-        let tampil = $(`<div class="row mt-3 mb-3 p-1 border border-primary">
+        let tampil = $(`<div class="row mt-3 mb-3 p-1 border border-primary bg-pelapor">
                               <div class="col-2 d-flex justify-content-center">
                                 <img src="./assets/img/user.png" alt="profil" class="profil">
                               </div>
@@ -170,6 +170,19 @@ function cariBuktiSelengkapnya(id) {
 }
 
 // script page tambah 
+
+  //script validation real-time
+  const NOMOR_TELEPON = $('[name="nomor_telepon_pelaku"]')
+NOMOR_TELEPON.change(() => {
+  if (isNaN(NOMOR_TELEPON[0].value)) {
+    $('small.ml-2.text-danger.no').removeClass('d-none')
+  } else {
+    $('small.ml-2.text-danger.no').addClass('d-none')
+    }
+})
+
+//end script validation real-time
+
   //script tambah foto
     
   // preview 1
