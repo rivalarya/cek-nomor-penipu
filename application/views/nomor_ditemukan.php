@@ -8,7 +8,7 @@
                         <img src="assets/img/user.png" alt="icon profil" class="profil">				
                         <h4 class="nomor-telepon-home ml-1 mt-1"></h4>
                     </div>
-                <h6>Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
+                <h6 class="mt-5">Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
                 </div>
             <div class="row row-cols-2 bukti-semua-pelapor">
                 </div>

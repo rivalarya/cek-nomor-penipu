@@ -11,7 +11,6 @@ $(document).ready(function(){
 
   $('#cari').click(() => {  
     let str = $('#nomor')[0].value;
-    // const divhasil = $('.container.border.border-primary')[0]
     jmlhGambar = 0; // pengreset variabel di fungsi cariBukti
     disabledOnOff(true) // button cari disabled
     if (str == '') {
@@ -39,7 +38,6 @@ $(document).ready(function(){
           })
 
           }else{
-            console.log(data);
             setTimeout(() => {
               Swal.fire({
               icon: 'success',
@@ -110,7 +108,6 @@ $(document).ready(function(){
 // script ker page nomor ditemukan
 $('#ditemukan').ready(() => {
 
-  // setTimeout(() => {
   $.getJSON("nomorditemukan/cari", function (data) {
       
     $('.nomor-telepon-home').text(data[0].nomor_telepon)      
@@ -123,7 +120,6 @@ $('#ditemukan').ready(() => {
       // ker pelapor
       
       for (let i in data) {
-        // console.log("ieu data di pelapor " + data[i].id_bukti)
 
         let tampil = $(`<div class="row mt-3 mb-3 p-1 border border-primary bg-pelapor">
                               <div class="col-2 d-flex justify-content-center">
@@ -149,7 +145,6 @@ $('#ditemukan').ready(() => {
 function cariBuktiSelengkapnya(id) {
 
   $.getJSON("nomorditemukan/cariselengkapnya/" + id, function (data) {
-    console.log("ieu data di seralized ", data)
 
     // ker bukti semua pelapor foto 
     for (let i in data) {
@@ -160,7 +155,6 @@ function cariBuktiSelengkapnya(id) {
 
     //ker perbaris
     for (let i in data) {
-      console.log("ieu data di getJSOn " + data[i].bukti)
             
       let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
       $(`.row.row-cols-2.bukti-pelapor.${id}`).append(masukanBukti);
@@ -241,13 +235,8 @@ NOMOR_TELEPON.change(() => {
           $('#bukti3')[0].attributes.id.value = ganti
           $('#thumb3')[0].attributes.id.value = 'thumb2' 
         
-      } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Ada kesalahan...',
-            text: 'Mohon refresh halaman ini.'
-          })
       }
+      
       $(e)[0].parentElement.remove()
       no-=1
     }
