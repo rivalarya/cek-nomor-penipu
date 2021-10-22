@@ -7,8 +7,6 @@
 	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 	
-	<link href="<?= base_url('assets/plugin/featherlight/featherlight.min.css') ?>" type="text/css" rel="stylesheet" />
-	
 </head>
 <body>
 <div class="blob">
@@ -30,7 +28,7 @@
             <div class="card-body shadow p-3 mb-5 bg-white rounded">
                 <h5 class="card-title">Bantu saya mengembangkan project ini</h5>
                 <p class="card-text">Jika teman-teman terpikirkan untuk menambah fitur, menemukan bug, atau apapun itu, silahkan ke link github project ini.</p>
-                <a href="#" class="btn btn-primary">Link Github</a>
+                <a href="https://github.com/rifalarya-2/cek-nomor-penipu.git" target="_blank" class="btn btn-primary">Link Github</a>
             </div>
         </div>
     </div>
