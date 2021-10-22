@@ -1,6 +1,6 @@
 <? ?>
 <div class="container m-auto">
-    <div class="row justify-content-center border shadow p-3 mb-5 bg-white rounded">
+    <div class="row justify-content-center border shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
             <?= form_open_multipart('tambah','id="formTambah"'); ?>
             <div class="form-row my-auto">

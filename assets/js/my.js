@@ -182,6 +182,7 @@ $(`[name='kirim']`).click(() => {
 
   $(`#formTambah`).submit();
   $(`[name='kirim']`).attr('disabled', true)
+  $(`[name='kirim']`).css('cursor', 'wait')
   $(`[name='kirim']`).text('Mengirim...')
   setTimeout(() => {
     $('input[type="text"],input[type="date"],input[type="file"], textarea').val('');
