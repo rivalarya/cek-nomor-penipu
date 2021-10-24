@@ -23,14 +23,42 @@
     <div class="row text-center justify-content-center versi">
     <h1>Version 1.0.0</h1>
     </div>
-    <div class="row text-center justify-content-center">
-        <div class="card text-center">
+    <div class="col text-center justify-content-center">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+        <li class="nav-item bg-white">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Halaman Github</a>
+        </li>
+        <li class="nav-item bg-white">
+          <a class="nav-link" id="kontak-tab" data-toggle="tab" href="#kontak" role="tab" aria-controls="kontak" aria-selected="false">Kontak</a>
+        </li>
+      </ul>
+      
+      <div class="tab-content bg-white" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="card text-center">
             <div class="card-body shadow p-3 mb-5 bg-white rounded">
                 <h5 class="card-title">Bantu saya mengembangkan project ini</h5>
                 <p class="card-text">Jika teman-teman terpikirkan untuk menambah fitur, menemukan bug, atau apapun itu, silahkan ke link github project ini.</p>
                 <a href="https://github.com/rifalarya-2/cek-nomor-penipu.git" target="_blank" class="btn btn-primary">Link Github</a>
             </div>
+          </div>
         </div>
+        
+        <div class="tab-pane fade border" id="kontak" role="tabpanel" aria-labelledby="kontak-tab">
+          <div class="container">
+              <div class="col">
+                <div class="card text-left">
+                  <div class="card-body rounded">
+                    <div class="whatsapp">
+                      <a href="https://wa.me/6283827468104/"><img src="<?= base_url('assets/img/wa.svg') ?>" alt="Kirim pesan ke Whatsapp"></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
     </div>
     <div class="row text-center justify-content-center">
 

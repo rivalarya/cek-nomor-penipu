@@ -185,7 +185,7 @@ img.about {
 	background-size: cover;
 }
 
-/* versi page */
+/* versi/about page */
 .row.text-center.justify-content-center.versi{
 	margin: min(50%, 60%);
 }
@@ -197,6 +197,39 @@ img.about {
 .row.text-center.justify-content-center .card{
 	border: none;
 	background-color: rgba(0, 5, 0, 0);
+}
+#home-tab,#kontak-tab{
+	font-size: calc(1vh + .8rem);
+}
+
+.whatsapp{
+	position: relative;
+	width: inherit;
+	height: inherit;
+}
+
+.whatsapp >a> img{
+	width : max(60px,15%);
+	position: relative;
+	left: 0;
+	transition: 1s;
+	z-index: 2;
+}
+.whatsapp::before{
+	content: '083827468104';
+	display: flex;
+	height: 80%;
+	align-items: center;
+	position: absolute;
+	transition: 1s;
+	left: 0;
+	z-index: -1;
+	font-size: calc(1vw + 1rem);
+}
+.whatsapp:hover::before{
+	left: max(100px,40%);
+	transition: 1s;
+	z-index: 1;
 }
 .blob {
 	position: absolute;
@@ -235,11 +268,11 @@ img.about {
 	}
 
 	78% {
-		transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+		transform: scale(1) translate(0vw, 40vh) rotate(-40deg);
 	}
 
 	80% {
-		transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+		transform: scale(.9,1) translate(0vw, 45vh) rotate(-20deg);
 	}
 
 	100% {
@@ -286,6 +319,19 @@ img.about {
 		margin-top: 6px;
 		height: 30px;
 		margin-left: -2px;
+	}
+
+	.whatsapp::before {
+		content: '083827468104';
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 1;
+		left: calc(1rem + .2vh);
+		position: absolute;
+		font-size: calc(1vw + 1rem);
 	}
 
 }
