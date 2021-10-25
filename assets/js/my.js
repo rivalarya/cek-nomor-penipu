@@ -1,26 +1,38 @@
-
-$(document).ready(function(){
-
+$(document).ready(function () {
   let disabledOnOff = bool => {
     $("#cari").attr("disabled", bool);
+    //ketika tombol cari di klik, off kan sementara
     setTimeout(() => {
       $("#cari").attr("disabled", false);
       
     }, 900);
   }
 
+// cek koneksi internet ada atau tidak ketika tiap mengklick
+  $(document).click(function () {
+         if (!navigator.onLine) {
+        // jika user offline, munculkan alert
+            swal.fire({
+            title: 'Tidak ada Internet',
+            timer: 1300,
+            showConfirmButton: false,
+            willOpen: function () {
+              swal.showLoading()
+            }
+          })
+        }
+      });
   $('#cari').click(() => {  
     let str = $('#nomor')[0].value;
     jmlhGambar = 0; // pengreset variabel di fungsi cariBukti
     disabledOnOff(true) // button cari disabled
     if (str == '') {
-      Swal.fire({
-      icon: 'warning',
-      title: 'Masukan nomor',
-    })
+        Swal.fire({
+        icon: 'warning',
+        title: 'Masukan nomor',
+      })
 
     } 
- 
     if (str != '') showResult(str)
   });
 
