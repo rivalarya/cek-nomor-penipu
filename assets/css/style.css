@@ -184,7 +184,18 @@ img.about {
 	background-size: cover;
 }
 
-/* versi/about page */
+/* untuk semua gambar */
+.bukti-home,
+.bukti-pelapor,
+.img.size-bukti-home,
+.bukti-semua-pelapor,
+#thumb1,
+#thumb2,
+#thumb3{
+	object-fit: cover;
+}
+
+/* versi about page */
 .row.text-center.justify-content-center.versi{
 	margin: min(50%, 60%);
 }

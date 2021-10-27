@@ -1,5 +1,5 @@
 
-    <span id="ditemukan">
+
     <div class="container nomor_ditemukan">
         <div class="container-fluid border border-primary nomor_ditemukan">
             <div class="row">
@@ -16,7 +16,3 @@
         </div>
     <div class="container pelapor">
         
-    </div>
-    </div>
-    </div>
-    </span>

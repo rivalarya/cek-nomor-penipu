@@ -21,7 +21,14 @@ $(document).ready(function () {
             }
           })
         }
-      });
+  });
+
+    //ker event pas nomor contoh diklik
+    const contoh = $('.contoh')
+    contoh.click(() => {
+      document.getElementById('nomor').value = 87814685520 // manual
+    })
+  
   $('#cari').click(() => {  
     let str = $('#nomor')[0].value;
     jmlhGambar = 0; // pengreset variabel di fungsi cariBukti
@@ -108,17 +115,10 @@ $(document).ready(function () {
       
     }) // end getJSOn    
   }
-  
-
-    //ker event pas nomor contoh diklik
-    const contoh = $('.contoh')
-    contoh.click(() => {
-      document.getElementById('nomor').value = 87814685520 // manual
-    })
 
   });
 // script ker page nomor ditemukan
-$('#ditemukan').ready(() => {
+$('.nomor_ditemukan').ready(() => {
 
   $.getJSON("nomorditemukan/cari", function (data) {
       
