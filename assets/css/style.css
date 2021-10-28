@@ -18,28 +18,34 @@ body {
 }
 
 /* container atas */
-input#nomor.searchnomor {
-	width: 75%;
+.title{
+	font-size: calc(2vmax + 1rem);
+}
+
+.description{
+	font-size: calc(2vmax + .3rem);
+}
+
+.p-contoh{
+	font-size: calc(1vh + .7rem);
+}
+
+.kode,
+input.searchnomor,
+.btn-cari {
+	height: calc(2vmax + 1.3rem);
+}
+
+input.searchnomor {
 	outline: none;
 	border: none;
 }
-
-.col-md.text-center {
-	display: inline;
-}
-
-.kode {
-	background-color: white;
-	padding: min(1.5%, 1.94%);
-	border-start-start-radius: .4rem;
-	border-end-start-radius: .4rem;
+input.searchnomor:focus {
+	box-shadow: none;
 }
 
 .btn-cari {
-	border-top-right-radius: .4rem;
-	border-bottom-right-radius: .4rem;
-	padding: max(18px, 10px);
-	background-color: var(--pallete2);
+	background-color: var(--pallete2)!important;
 	/* background-image: url('../img/search_white_48dp.svg');
 	background-repeat: no-repeat; */
 	outline: none;
@@ -47,7 +53,7 @@ input#nomor.searchnomor {
 }
 
 .btn-cari:hover {
-	background-color: #19bebe;
+	background-color: #12afaf!important;
 }
 
 .contoh {
@@ -55,7 +61,7 @@ input#nomor.searchnomor {
 }
 
 .container.text-center {
-	margin-top: 7%;
+	margin-top: 6%;
 }
 
 /* end */
@@ -82,6 +88,10 @@ input#nomor.searchnomor {
 /* page tambah */
 input[type="file"] {
 	margin-bottom: 60px;
+}
+
+#tambah,#hapus{
+	cursor: pointer;
 }
 
 #bukti1,
@@ -120,7 +130,11 @@ div.col-7.text-left .keterangan {
 	font-size: 1rem;
 }
 
-.row.row-cols-2.bukti-home, .bukti-semua-pelapor{
+.row.row-cols-2.bukti-home,
+.bukti-semua-pelapor,
+#thumb1,
+#thumb2,
+#thumb3 {
 	max-width: 35%;
 	cursor:zoom-in;
 }
@@ -184,6 +198,10 @@ img.about {
 	background-size: cover;
 }
 
+.custom-file{
+	/* text-align: left; */
+}
+
 /* untuk semua gambar */
 .bukti-home,
 .bukti-pelapor,
@@ -197,7 +215,7 @@ img.about {
 
 /* versi about page */
 .row.text-center.justify-content-center.versi{
-	margin: min(50%, 60%);
+	margin: 50%;
 }
 
 .row.text-center.justify-content-center.versi h1{
@@ -302,14 +320,6 @@ img.about {
 		padding: .8%;
 	}
 
-	h1 {
-		font-size: 1rem;
-	}
-
-	h3 {
-		font-size: 0.9rem;
-	}
-
 	div.col-7.text-left .tglupload,
 	.tglkejadian-pelapor {
 		font-size: 0.7rem;
@@ -348,13 +358,6 @@ img.about {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-	h1 {
-		font-size: 1.6rem;
-	}
-
-	h3 {
-		font-size: 1.3rem;
-	}
 
 	img.profil {
 		margin-top: 6px;

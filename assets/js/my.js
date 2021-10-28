@@ -1,9 +1,9 @@
 $(document).ready(function () {
   let disabledOnOff = bool => {
-    $("#cari").attr("disabled", bool);
+    $(".btn-cari").attr("disabled", bool);
     //ketika tombol cari di klik, off kan sementara
     setTimeout(() => {
-      $("#cari").attr("disabled", false);
+      $(".btn-cari").attr("disabled", false);
       
     }, 900);
   }
@@ -24,13 +24,13 @@ $(document).ready(function () {
   });
 
     //ker event pas nomor contoh diklik
-    const contoh = $('.contoh')
+    const contoh = $('u.contoh')
     contoh.click(() => {
-      document.getElementById('nomor').value = 87814685520 // manual
+      $('.searchnomor').val('87814685520') // manual
     })
   
-  $('#cari').click(() => {  
-    let str = $('#nomor')[0].value;
+  $('.btn-cari').click(() => {  
+    let str = $('.searchnomor')[0].value;
     jmlhGambar = 0; // pengreset variabel di fungsi cariBukti
     disabledOnOff(true) // button cari disabled
     if (str == '') {
@@ -189,28 +189,33 @@ NOMOR_TELEPON.change(() => {
 
 //end script validation real-time
 
-// kosongkan inputan ketika di submit
-$(`[name='kirim']`).click(() => {
+//ketika gambar dipilih, ganti kalimat 'pilih bukti' jadi sesuai dengan nama file yg dipilih
+const gantiLabel = (e) => e.labels[0].textContent = e.files[0].name
 
-  $(`#formTambah`).submit();
-  $(`[name='kirim']`).attr('disabled', true)
-  $(`[name='kirim']`).css('cursor', 'wait')
-  $(`[name='kirim']`).text('Mengirim...')
-  setTimeout(() => {
-    $('input[type="text"],input[type="date"],input[type="file"], textarea').val('');
-    $('#thumb1').attr('src', '');
+// kosongkan inputan ketika di submit
+  
+  $(`#formTambah`).submit(() => {
+    $(`[name='kirim']`).attr('disabled', true)
+    $(`[name='kirim']`).css('cursor', 'wait')
+    $(`[name='kirim']`).text('Mengirim...')
+    setTimeout(() => {
+      $('input[type="text"],input[type="date"],input[type="file"], textarea').val('');
+      $('#thumb1').attr('src', '');
+      $('#thumb2').attr('src', '');
+      $('#thumb3').attr('src', '');
     
-  }, 400);
+    }, 400);
+
 })
 
   //script tambah foto
     
   // preview 1
-  const bukti1 = document.getElementById('bukti1')
-  const thumb1 = document.getElementById('thumb1')
-    bukti1.addEventListener("change", function() {
-      const file = bukti1.files[0]
-      thumb1.src = URL.createObjectURL(file)
+  const bukti1 = $('#bukti1')
+  const thumb1 = $('#thumb1')
+    $('#bukti1').change(function() {
+      const file = bukti1[0].files[0]
+      thumb1.attr({ 'href': URL.createObjectURL(file), 'src': URL.createObjectURL(file)})
     });
 
     // variabel ker nentuken jumlah foto
@@ -220,21 +225,23 @@ $(`[name='kirim']`).click(() => {
 
           no++;
 
-        let baru = $(`<div class='form-inline justify-content-around border mt-3 mb-3'>
-                          <input type='file' class='form-control col-4' name='bukti${no}' id='bukti${no}' required>
-                          <img id='thumb${no}'  class='bukti col-7' src=''/>
-                          <span id="hapus" class="badge badge-danger w-auto p-2" onclick="hapusfoto(this)"> Hapus </span>
-                      </div> `);
+        let baru = $(`<div class="form-inline justify-content-around border p-1 mt-3 mb-3">            
+                    <div class="custom-file col-5">
+                        <input type="file" class="custom-file-input" name='bukti${no}' id='bukti${no}' onchange="gantiLabel(this)" required>
+                        <label class="custom-file-label justify-content-start" for="bukti${no}">Pilih bukti...</label>
+                    </div>
+                    <img id='thumb${no}' data-featherlight="image" class="bukti col-7" src=""/>
+                    <span id="hapus" class="badge badge-danger w-auto p-2" onclick="hapusfoto(this)"> Hapus </span>
+                </div>`);
         $("#tambahbukti").before(baru);
                       
-        //preview 
-          const bukti = document.getElementById(`bukti${no}`)
-          const thumb = document.getElementById(`thumb${no}`)
-          bukti.addEventListener("change", function() {
-          const file = bukti.files[0]
-              thumb.src = URL.createObjectURL(file)
-          });
-        
+      //preview 
+      const bukti = $(`#bukti${no}`)
+      const thumb = $(`#thumb${no}`)
+       bukti.change(function() {
+          const file = bukti[0].files[0]
+          thumb.attr({ 'href': URL.createObjectURL(file), 'src': URL.createObjectURL(file)})
+        });
 
       });
 
@@ -252,14 +259,14 @@ $(`[name='kirim']`).click(() => {
 
     // script hapus foto
 
-    function hapusfoto(e) {
+function hapusfoto(e) {
 
-      if($(e)[0].parentNode.firstElementChild.name == 'bukti2' && $('#bukti3')[0] != null){
+      if(e.parentNode.firstElementChild.firstElementChild.name == 'bukti2' && $('#bukti3')[0] != null){
 
-          const ganti = 'bukti2'
-          $('#bukti3')[0].name = ganti
-          $('#bukti3')[0].attributes.id.value = ganti
-          $('#thumb3')[0].attributes.id.value = 'thumb2' 
+        $('#bukti3')[0].labels[0].attributes.for.nodeValue = 'bukti2'
+        $('#bukti3')[0].name = 'bukti2'
+        $('#bukti3')[0].attributes.id.value = 'bukti2'
+        $('#thumb3')[0].attributes.id.value = 'thumb2'
         
       }
       
