@@ -189,7 +189,6 @@ font-size: max(.9rem, 1.2rem);
 /* end */
 
 img.about {
-	width: clamp(30px, 7%, 60px);
 	padding: 0.5%;
 }
 

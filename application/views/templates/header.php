@@ -15,7 +15,7 @@
 </head>
 <nav class="fixed-top text-left">
 	<a href="<?= base_url('home/about');?>" target="_blank">
-		<img src="<?= $about; ?>" class="about" title="About" alt="About">
+		<img src="<?= $about; ?>" class="about" title="About" alt="About" width="clamp(30px, 7%, 60px)" height="100%">
 	</a> 
 </nav>
 <body>
