@@ -223,15 +223,15 @@ img.about {
 }
 
 /* versi about page */
-.row.text-center.justify-content-center.versi{
-	margin: 50%;
+.text-center.justify-content-center.versi{
+	margin: 50% 0px;
 }
 
-.row.text-center.justify-content-center.versi h1{
+.text-center.justify-content-center.versi h1{
 	font-size: 2rem;
 }
 
-.row.text-center.justify-content-center .card{
+.card{
 	border: none;
 	background-color: rgba(0, 5, 0, 0);
 }

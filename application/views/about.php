@@ -20,9 +20,7 @@
 </svg>
 </div>
 <div class="container text-center">
-    <div class="row text-center justify-content-center versi">
-    <h1>Version 1.0.0</h1>
-    </div>
+    <h1 class="text-center justify-content-center versi">Cek Nomor Penipu</h1>
     <div class="col text-center justify-content-center">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
         <li class="nav-item bg-white">
