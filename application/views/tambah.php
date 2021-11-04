@@ -1,4 +1,8 @@
-<? ?>
+<nav class="fixed-top text-left">
+    <a href="<?= base_url('home/about');?>" target="_blank">
+        <img src="<?= $about; ?>" class="about" title="About" alt="About" width="58px" height="100%">
+    </a> 
+</nav>
 <div class="container m-auto">
     <div class="row justify-content-center border shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
@@ -30,11 +34,11 @@
             <label for="bukti">Upload Bukti</label>
             <div class="form-group">    
                 <div class="form-inline justify-content-around border p-1 mt-3 mb-3">            
-                    <div class="custom-file col-5">
+                    <div class="custom-file col-4">
                         <input type="file" class="custom-file-input" name="bukti1" id="bukti1" onchange='gantiLabel(this)' required>
                         <label class="custom-file-label justify-content-start" for="bukti1">Pilih bukti...</label>
                     </div>
-                    <img id="thumb1" data-featherlight="image" class="bukti col-7" src=""/>
+                    <img id="thumb1" data-featherlight="image" class="bukti col-6" src=""/>
                     <a id="tambah" class="text-white badge badge-success">Tambah bukti</a>
                     <a class="tambah1 text-warning text-decoration-none">Maksimal <br> 3 bukti</a>
                 </div>

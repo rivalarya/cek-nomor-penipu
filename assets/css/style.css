@@ -140,7 +140,6 @@ div.col-7.text-left .keterangan {
 }
 
 .bukti-pelapor {
-	max-width: 27%;
 	cursor:zoom-in;
 }
 
@@ -150,6 +149,13 @@ img.size-bukti-home {
 	padding: 1%;
 	margin-top: .6%;
 	width: 25%;
+	border-radius: 3px;
+}
+img.size-bukti-nomor-ditemukan {
+	margin: 1%;
+	margin-top: .6%;
+	max-width: 30%;
+	border-radius: 3px;
 }
 
 /* end */
@@ -159,6 +165,10 @@ div.user-nomorditemukan{
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+}
+
+h6.mt-5{
+	font-size: calc(.4rem + 1vmax);
 }
 
 .container.pelapor,

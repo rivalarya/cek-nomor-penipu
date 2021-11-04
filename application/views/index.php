@@ -1,4 +1,9 @@
 <?php  ?>
+<nav class="fixed-top text-left">
+	<a href="<?= base_url('home/about');?>" target="_blank">
+		<img src="<?= $about; ?>" class="about" title="About" alt="About" width="58px" height="100%">
+	</a> 
+</nav>
 <div class="container-fluid wave">
 	<div class="row">
 		<div class="col-sm text-center mb-3 mt-4">

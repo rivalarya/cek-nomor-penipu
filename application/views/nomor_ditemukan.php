@@ -1,5 +1,3 @@
-
-
     <div class="container nomor_ditemukan">
         <div class="container-fluid border border-primary nomor_ditemukan">
             <div class="row">
@@ -11,8 +9,11 @@
                 <h6 class="mt-5">Jumlah Pelapor : <span class="jmlh-pelapor"></span></h6>
                 </div>
             <div class="row row-cols-2 bukti-semua-pelapor">
-                </div>
+
+            </div>
             </div>
         </div>
     <div class="container pelapor">
+        
+    </div>
         

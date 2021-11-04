@@ -137,12 +137,14 @@ $('.nomor_ditemukan').ready(() => {
                               <div class="col-2 d-flex justify-content-center">
                                 <img src="./assets/img/user.png" alt="profil" class="profil">
                               </div>
-                                <div class="col-7 text-left">				
+                                <div class="col text-left">				
                                   <h4 class="nama-pelapor">${data[i].nama_pelapor}</h4>
                                   <h6 class="tglkejadian-pelapor">${data[i].tgl_kejadian}</h6>
                                   <p class="keterangan-pelapor ml-1">${data[i].keterangan}</p>
-                                </div>
-                                <div class="row row-cols-2 bukti-pelapor ${data[i].id_bukti}">
+                                  <div class="row">
+                                    <div class="container bukti-pelapor ${data[i].id_bukti}">
+                                    </div>
+                                  </div>
                                 </div>
                             </div>`);
         $(".container.pelapor").append(tampil);
@@ -162,14 +164,14 @@ function cariBuktiSelengkapnya(id) {
     for (let i in data) {
               
       let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
-      $(".row.row-cols-2.bukti-semua-pelapor").append(masukanBukti);
+      $(".bukti-semua-pelapor").append(masukanBukti);
     }
 
     //ker perbaris
     for (let i in data) {
             
-      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-home" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
-      $(`.row.row-cols-2.bukti-pelapor.${id}`).append(masukanBukti);
+      let masukanBukti = $(`<img src="./assets/img/bukti/${data[i].bukti}" class="size-bukti-nomor-ditemukan" alt="" data-featherlight="image" href="./assets/img/bukti/${data[i].bukti}">`)
+      $(`.bukti-pelapor.${id}`).append(masukanBukti);
         
     }
   })// end getJSOn
@@ -226,11 +228,11 @@ const gantiLabel = (e) => e.labels[0].textContent = e.files[0].name
           no++;
 
         let baru = $(`<div class="form-inline justify-content-around border p-1 mt-3 mb-3">            
-                    <div class="custom-file col-5">
+                    <div class="custom-file col-4">
                         <input type="file" class="custom-file-input" name='bukti${no}' id='bukti${no}' onchange="gantiLabel(this)" required>
                         <label class="custom-file-label justify-content-start" for="bukti${no}">Pilih bukti...</label>
                     </div>
-                    <img id='thumb${no}' data-featherlight="image" class="bukti col-7" src=""/>
+                    <img id='thumb${no}' data-featherlight="image" class="bukti col-6" src=""/>
                     <span id="hapus" class="badge badge-danger w-auto p-2" onclick="hapusfoto(this)"> Hapus </span>
                 </div>`);
         $("#tambahbukti").before(baru);
